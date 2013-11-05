@@ -31,3 +31,9 @@ The nagios check itself then uses the standard deviation provided as the treshol
 1. Obviously you should know how to use nagios checks and this one works the same. Just an example.
     - `check_tf_distance.sh <bricklet_uid> <desired_distance_in_mm> <measurement_treshold_in_mm>`
     - in action: `check_tf_distance.sh hVu 1000 12`
+
+## Copyright and License
+
+(c) 2013 Martin Seener
+
+Released under the GNU GPLv2
