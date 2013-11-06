@@ -32,6 +32,40 @@ The nagios check itself then uses the standard deviation provided as the treshol
     - `check_tf_distance.sh <bricklet_uid> <desired_distance_in_mm> <measurement_treshold_in_mm>`
     - in action: `check_tf_distance.sh hVu 1000 12`
 
+### How does a Nagios message look like?
+
+#### Critical State
+
+```
+--SERVICE-ALERT-------------------
+-
+- Hostaddress: 10.0.0.1
+- Hostname:    monitor.example.com
+- Service:     Check Rack Door Distance: monitor.example.com
+- - - - - - - - - - - - - - - - -
+- State:       CRITICAL
+- Date:        2013-11-06 18:30:14
+- Output:      CRITICAL - Measured: 1438 mm, Expected: 1010 mm, Treshold: 5 mm
+-
+----------------------------------
+```
+
+#### Normal State
+
+```
+--SERVICE-ALERT-------------------
+-
+- Hostaddress: 10.0.0.1
+- Hostname:    monitor.example.com
+- Service:     Check Rack Door Distance: monitor.example.com
+- - - - - - - - - - - - - - - - -
+- State:       OK
+- Date:        2013-11-06 18:34:50
+- Output:      OK - Measured: 1010 mm, Expected: 1010 mm, Treshold: 5 mm
+-
+----------------------------------
+```
+
 ## Copyright and License
 
 (c) 2013 Martin Seener
