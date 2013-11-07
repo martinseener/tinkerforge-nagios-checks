@@ -18,7 +18,7 @@ print_version() {
 print_help() {
   print_version $PROGNAME $VERSION
   echo ""
-  echo "$PROGNAME is a tool to calculate the standard deviation of tinkerforge's distance-ir-bricklet to be used for the nagios distance-check as the treshold."
+  echo "$PROGNAME is a tool to calculate the standard deviation of tinkerforge's distance-ir-bricklet to be used for the nagios distance-check as the threshold."
   echo "This tool requires the Brick Daemon 'brickd' to be installed as well as the tinkerforge api shell bindings."
   echo "You can find them here: http://www.tinkerforge.com/de/doc/index.html#software"
   echo ""
@@ -37,7 +37,7 @@ case "$1" in
     exit $STATE_UNKNOWN
     ;;
   *)
-    ;;    
+    ;;
 esac
 
 ### FUNCTIONS

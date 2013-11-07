@@ -4,10 +4,10 @@
 # (c) 2013 - Martin Seener (martin@seener.de)
 
 # This Nagios check will connect to your tinkerforge distance-ir-bricklet, read the measured distance
-# and alert you when the distance is more or less than a given distance using a treshold.
-# The treshold can be calculated using tf_distance_ir_bricklet_stddev_calc.sh script. For that built up
+# and alert you when the distance is more or less than a given distance using a threshold.
+# The threshold can be calculated using tf_distance_ir_bricklet_stddev_calc.sh script. For that built up
 # your bricklet with the distance you want to measure and run that script for one or two hours (3600 or 7200)
-# measurements. It will calculate the standard deviation for you which then can be used as the treshold.
+# measurements. It will calculate the standard deviation for you which then can be used as the threshold.
 
 # This check can be used for example for a distance check, if a door in a server rack was opened, therefore
 # the distance between the bricklet and the door has de- or increased.
@@ -33,7 +33,7 @@ print_help() {
   echo "This check requires the Brick Daemon 'brickd' to be installed as well as the tinkerforge api shell bindings."
   echo "You can find them here: http://www.tinkerforge.com/de/doc/index.html#software"
   echo ""
-  echo "Usage: $0 <bricklet_uid> <desired_distance_in_mm> <measurement_treshold_in_mm> | $0 hDu 1000 5"
+  echo "Usage: $0 <bricklet_uid> <desired_distance_in_mm> <measurement_threshold_in_mm> | $0 hDu 1000 5"
   echo ""
 }
 
@@ -84,7 +84,7 @@ measure_distance() {
   MIN_DESIRED=$(echo "scale=0; ($2 - $3)/1" | bc)
   MAX_DESIRED=$(echo "scale=0; ($2 + $3)/1" | bc)
   if [[ $DISTANCE -ge $MIN_DESIRED ]] && [[ $DISTANCE -le $MAX_DESIRED ]]; then
-    echo "OK - Measured: $DISTANCE mm, Expected: $2 mm, Treshold: $3 mm|measured=$DISTANCE,expected=$2,treshold=$3"
+    echo "OK - Measured: $DISTANCE mm, Expected: $2 mm, Threshold: $3 mm|measured=$DISTANCE,expected=$2,threshold=$3"
     exit $STATE_OK
   fi
 
@@ -92,10 +92,10 @@ measure_distance() {
   MIN_DESIRED2=$(echo "scale=0; ($2 - (2 * $3))/1" | bc)
   MAX_DESIRED2=$(echo "scale=0; ($2 + (2 * $3))/1" | bc)
   if [[ $DISTANCE -ge $MIN_DESIRED2 ]] && [[ $DISTANCE -le $MAX_DESIRED2 ]]; then
-    echo "WARNING - Measured: $DISTANCE mm, Expected: $2 mm, Treshold: $3 mm|measured=$DISTANCE,expected=$2,treshold=$3"
+    echo "WARNING - Measured: $DISTANCE mm, Expected: $2 mm, Threshold: $3 mm|measured=$DISTANCE,expected=$2,threshold=$3"
     exit $STATE_WARN
   else
-    echo "CRITICAL - Measured: $DISTANCE mm, Expected: $2 mm, Treshold: $3 mm|measured=$DISTANCE,expected=$2,treshold=$3"
+    echo "CRITICAL - Measured: $DISTANCE mm, Expected: $2 mm, Threshold: $3 mm|measured=$DISTANCE,expected=$2,threshold=$3"
     exit $STATE_CRIT
   fi
 }
