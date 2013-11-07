@@ -25,6 +25,7 @@ The nagios check itself then uses the standard deviation provided as the treshol
     - `bash tf_distance_ir_bricklet_stddev_calc.sh <distance_ir_bricklet_UID> <sample_points>`
     - `bash tf_distance_ir_bricklet_stddev_calc.sh hVu 7200`
 3. The script will output the standard deviation which is the treshold for the check itself
+4. There is an example file (distance_ir_samples_20131106_232249.dat) with 30.000 sample points from a GP2Y0A02 sensor and a standard deviation of about 5
 
 ### How to use the check?
 
